@@ -1,221 +1,313 @@
-# [BUSINESS NAME] Fabrication Works — Static Website
+SmartLead AI
 
-A production-ready single-page HTML/CSS/Vanilla JavaScript fabrication website. No React, Next.js, Vue, database or secret API keys are required.
+Project
 
-## Files
+SmartLead AI — Lead Capture & Automation System
 
-- `index.html` — page structure and SEO metadata.
-- `style.css` — responsive industrial/premium UI.
-- `script.js` — **single source of truth** for business details, services, gallery, testimonials, FAQs, service areas and functionality.
-- `assets/images/` — local image folders and editable placeholder SVGs.
+A JavaScript-focused lead management project. The goal is to build one continuous, portfolio-ready application where every new topic is added to the same project.
 
-## 1. Open locally
+Today's Progress
 
-Double-click `index.html` for a basic preview. For best results, use a local static server:
+Completed Features
 
-```bash
-python -m http.server 8000
-```
+Basic SmartLead AI project setup
 
-Then open `http://localhost:8000`.
+Lead form
 
-## 2. Change business name and contact details
+Name input
 
-Open `script.js` and edit the clearly marked `BUSINESS_CONFIG` at the top:
+Phone input
 
-- `name`
-- `phone`
-- `phoneRaw`
-- `whatsapp`
-- `whatsappRaw`
-- `email`
-- `address`
-- `mapUrl`
-- `mapEmbedUrl`
-- `googleBusinessUrl`
-- `workingHours`
-- `logo`
-- `heroImage`
-- `aboutImage`
-- `serviceAreas`
-- `socialLinks`
-- `seo`
-- `counters`
+Course input
 
-Do not duplicate important business information in HTML. The page reads it from this configuration.
+Status selection
 
-**Important:** `phoneRaw` and `whatsappRaw` should contain digits only. For WhatsApp, include the country code without `+`.
+Form submit handling
 
-## 3. Replace logo
+preventDefault()
 
-Replace `assets/images/logo.svg` with your real logo, or change `BUSINESS_CONFIG.logo` to another local path.
+Lead object creation
 
-Recommended: transparent SVG or WebP/PNG, roughly 200–600 px wide.
+Leads array
 
-## 4. Replace hero/about images
+.push() to add new leads
 
-Change:
+.length to count total leads
 
-```js
-heroImage: "assets/images/hero-fabrication.svg",
-aboutImage: "assets/images/workshop.svg",
-```
+Dynamic success message
 
-to your real local images.
+Form reset
 
-Recommended hero: 1600×1000 or similar.
-Recommended about image: 1000×1000 or similar.
-Prefer WebP/AVIF for real photos and keep individual images reasonably compressed.
+Lead count update
 
-## 5. Add, remove or edit services
+Lead cards rendered on screen
 
-All service names are inside `SERVICE_CATEGORIES` in `script.js`.
+forEach() for displaying leads
 
-Each category contains a normal JavaScript array. Add or remove strings there.
+Search input setup
 
-`SERVICE_INFO` controls the category description, icon and typical use case.
+Case-insensitive search logic
 
-The service cards are generated automatically. Enquiry buttons open the modal and pre-select the service.
+.filter()
 
-## 6. Add gallery photos
+.toLowerCase()
 
-Edit `GALLERY_DATA`.
+.trim()
 
-Each item follows:
+.includes()
 
-```js
-[
-  "Project title",
-  "Category",
-  "assets/images/gates/gate-01.webp",
-  "Meaningful image alt text",
-  "Short project description"
-]
-```
+Current Project Flow
 
-The current 24 SVG files are development placeholders. Replace them with genuine project photos or properly licensed/royalty-free reference images.
+Lead Form
+   ↓
+Submit Event
+   ↓
+preventDefault()
+   ↓
+Lead Object Created
+   ↓
+leads.push(lead)
+   ↓
+leads Array
+   ↓
+displayLeads()
+   ↓
+Lead Cards on Screen
 
-Suggested image size: around 1200×900 or 1200×1200 depending on composition. Use WebP when possible.
+Current JavaScript Concepts Used
 
-## 7. Image naming
+DOM Selection
 
-Use descriptive names such as:
+document.getElementById()
 
-- `gates/sliding-gate-01.webp`
-- `railings/ss-glass-railing-01.webp`
-- `staircases/spiral-staircase-01.webp`
-- `vehicles/truck-dala-01.webp`
+Event Listener
 
-Every gallery image is rendered with meaningful alt text and lazy loading.
+leadForm.addEventListener("submit", getData);
 
-## 8. WhatsApp
+Lead Object
 
-Change `whatsappRaw` in `BUSINESS_CONFIG`.
+let lead = {
+  name: name.value,
+  phone: phone.value,
+  course: course.value,
+  status: status.value
+};
 
-The enquiry form creates a pre-filled WhatsApp message. Gallery lightbox sharing also includes the selected design title.
+Leads Array
 
-No WhatsApp API key is required for this static approach.
+let leads = [];
 
-## 9. Real enquiry backend
+New leads:
 
-The front-end currently uses WhatsApp as the default lead channel.
+leads.push(lead);
 
-A backend can later be connected through Formspree, EmailJS or a custom API. Do not put private API keys or server secrets in `index.html`, `style.css` or `script.js`.
+Total leads:
 
-For production backend work, validate and sanitize data again on the server.
+leads.length;
 
-## 10. Google Maps
+Display Leads
 
-Set:
+leadsList.innerHTML = "";
 
-```js
-mapUrl: "YOUR_GOOGLE_MAPS_LINK",
-mapEmbedUrl: "YOUR_EMBED_URL"
-```
+leads.forEach((item) => {
+  // Render lead card
+});
 
-If `mapEmbedUrl` is blank, the site shows a placeholder and an "Open Google Maps" button.
+Search Feature
 
-Do not publish a private workshop address unless the business owner has approved it.
+The search logic uses:
 
-## 11. SEO
+.toLowerCase()
+.trim()
+.filter()
+.includes()
 
-Edit `BUSINESS_CONFIG.seo` for title, description and canonical URL.
+Current logic:
 
-For a real domain, replace the canonical URL and update Open Graph image metadata in `index.html`.
+let query = searchInput.value.toLowerCase().trim();
 
-The site includes LocalBusiness JSON-LD generated from `BUSINESS_CONFIG`. It intentionally does not add fake ratings, fake reviews or fake awards.
+let data = leads.filter((item) => {
+  return item.name.toLowerCase().includes(query);
+});
 
-## 12. Netlify
+Flow:
 
-Drag the project folder into Netlify Drop, or connect a Git repository.
+User Types Name
+      ↓
+input Event
+      ↓
+Search Query
+      ↓
+Filter Matching Leads
+      ↓
+Display Matching Results
 
-No build command is required.
+Current Functions
 
-## 13. GitHub Pages
+getData()
 
-Upload the files to a GitHub repository and enable Pages from the repository settings. The project is static, so no build step is needed.
+Responsible for:
 
-## 14. Vercel
+Handling form submission
 
-Import the repository into Vercel and deploy as a static site. No framework is required.
+Preventing page refresh
 
-## 15. cPanel/shared hosting
+Creating the lead object
 
-Upload `index.html`, `style.css`, `script.js`, `README.md` and the complete `assets` folder into `public_html`.
+Adding the lead to the leads array
 
-## 16. Custom domain
+Showing the success message
 
-Point the domain DNS records to your chosen hosting provider and configure HTTPS. Then update `BUSINESS_CONFIG.seo.canonical`.
+Calling the display function
 
-## 17. Google Analytics later
+Resetting the form
 
-Add your approved Google Analytics/Tag Manager snippet to `index.html` after obtaining the real measurement ID.
+displayLeads()
 
-There are no hard-coded analytics IDs in this starter.
+Responsible for:
 
-## 18. Testimonials
+Updating lead count
 
-The testimonial section contains clearly marked sample placeholders. Replace every sample with genuine customer feedback before publishing.
+Clearing previous UI
 
-Do not publish invented names, reviews, star ratings or claims as if they were real.
+Looping through leads
 
-## 19. Vehicle modification disclaimer
+Rendering lead cards
 
-The site includes:
+Search Function
 
-> Vehicle body fabrication and modification is subject to applicable laws, safety standards, manufacturer requirements and necessary approvals. Customers should confirm approval requirements before using modified vehicles on public roads.
+Responsible for:
 
-Do not promise guaranteed RTO/legal approval. Approval depends on the actual alteration, vehicle, manufacturer requirements and applicable authority rules.
+Reading search input
 
-## 20. Mobile testing
+Filtering leads
 
-Test at minimum:
+Displaying matching results
 
-- 360 px mobile
-- 390 px mobile
-- 768 px tablet
-- 1024 px laptop/tablet
-- 1366 px desktop
+Parameter Concept Learned
 
-Test the menu, phone links, WhatsApp, quote modal, service filtering, gallery filtering/search, lightbox, FAQ, form validation and mobile bottom CTA.
+We started learning how to make displayLeads() reusable with a parameter:
 
-## Basic maintenance checklist
+function displayLeads(data) {
+  // display data
+}
 
-- Replace all TODO business information.
-- Replace placeholder counters with verified figures.
-- Replace sample testimonials with genuine reviews.
-- Replace placeholder images with owned/licensed photos.
-- Verify phone and WhatsApp numbers.
-- Verify Google Maps link.
-- Verify service areas.
-- Test all forms and WhatsApp messages.
-- Test mobile layout.
-- Compress new images.
-- Run a browser console check before publishing.
-- Add a real privacy policy/terms page or approved legal content if required by the business.
+Normal leads:
 
-## Notes
+displayLeads(leads);
 
-This project is intentionally framework-free and database-free. It is suitable for Netlify, GitHub Pages, Vercel static deployment and shared hosting.
+Search results:
 
-The quotation guide does **not** calculate fake prices. Final pricing is left to the business owner because it depends on actual material, dimensions, design, weight, finish, transport, installation and site conditions.
+displayLeads(filteredData);
+
+This allows the same function to display different arrays.
+
+Next Task
+
+Refactor the project so displayLeads() accepts an array parameter.
+
+Target:
+
+Normal Leads
+   ↓
+displayLeads(leads)
+
+Search Results
+   ↓
+displayLeads(filteredData)
+
+Also add:
+
+No leads found
+
+when no matching lead exists.
+
+Learning Workflow
+
+Direct Task
+   ↓
+Student Attempts Solution
+   ↓
+If Stuck → Hint
+   ↓
+If Still Stuck → Solution
+
+The main focus is JavaScript. HTML and CSS are used only when necessary for the project UI.
+
+Project Rule
+
+SmartLead AI is one continuous project.
+
+New Concept
+   ↓
+New Feature
+   ↓
+Integrate with Existing Code
+   ↓
+Test
+   ↓
+Continue Project
+
+No disconnected exercises.
+
+Future Roadmap
+
+Reusable displayLeads(data)
+
+No-results state
+
+Search improvement
+
+Status filtering
+
+Lead status update
+
+Delete lead
+
+Edit lead
+
+LocalStorage
+
+JSON
+
+Data persistence
+
+Dashboard statistics
+
+API integration
+
+Fetch
+
+Async/Await
+
+Error handling
+
+Webhooks
+
+n8n automation
+
+Google Sheets integration
+
+Email automation
+
+WhatsApp automation
+
+Tech Stack
+
+HTML
+
+CSS
+
+JavaScript
+
+LocalStorage (future)
+
+APIs (future)
+
+Webhooks (future)
+
+n8n (future)
+
+Project: SmartLead AI
+Focus: JavaScript + AI Automation
+Status: In Progress 🚀

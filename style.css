@@ -1,0 +1,199 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f1f5f9;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Two-Column Layout Container */
+.dashboard-wrapper {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    max-width: 900px;
+    align-items: flex-start;
+}
+
+/* Left Card: Form */
+.form-card {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 320px;
+}
+
+/* Right Card: Display Area */
+.leads-card {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex: 1.2;
+    min-width: 320px;
+    max-height: 520px;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 20px;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.leads-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.leads-header h3 {
+    font-size: 18px;
+    color: #1e293b;
+}
+
+.badge {
+    background: #e0e7ff;
+    color: #4338ca;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Form Styles */
+.input-group {
+    margin-bottom: 14px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    background-color: #fff;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #2563eb;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+#message {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #16a34a;
+    text-align: center;
+}
+
+/* Scrollable Leads List */
+.leads-list {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 4px;
+}
+
+.empty-text {
+    color: #94a3b8;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Individual Item Card */
+.lead-item {
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.lead-item p {
+    font-size: 13px;
+    color: #334155;
+    margin-bottom: 4px;
+}
+
+.lead-item p:last-child {
+    margin-bottom: 0;
+}
+
+.tag {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+/* Responsive Fix for Mobile Screens */
+@media (max-width: 768px) {
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+}
+/* Search Box Styling */
+.search-box {
+    margin-bottom: 12px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-box input:focus {
+    border-color: #2563eb;
+}

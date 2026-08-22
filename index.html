@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLead AI Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <!-- Left Column: Form -->
+        <div class="form-card">
+            <h2>SmartLead AI</h2>
+            <form id="leadForm">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required placeholder="Enter full name">
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" required placeholder="Enter phone number">
+                </div>
+
+                <div class="input-group">
+                    <label for="course">Course</label>
+                    <input type="text" id="course" required placeholder="Enter course name">
+                </div>
+
+                <div class="input-group">
+                    <label for="status">Status</label>
+                    <select id="status" required>
+                        <option value="" disabled selected hidden>Select Status</option>
+                        <option value="New">New</option>
+                        <option value="Contacted">Contacted</option>
+                    </select>
+                </div>
+
+                <button type="submit">Submit Lead</button>
+            </form>
+            <div id="message"></div>
+        </div>
+        <!-- Right Column: Leads Display -->
+        <div class="leads-card">
+            <div class="leads-header">
+                <h3>Submitted Leads</h3>
+                <span id="leadCount" class="badge">0</span>
+            </div>
+            <div id="leadsList" class="leads-list">
+                <p class="empty-text">No leads submitted yet.</p>
+            </div>
+        </div>
+
+                <!-- Right Column: Leads Display -->
+<div class="leads-card">
+    <div class="leads-header">
+        <h3>Submitted Leads</h3>
+        <span id="leadCount" class="badge">0</span>
+    </div>
+
+    <!-- Search Input Box -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search by name...">
+    </div>
+
+    <div id="leadsListSearch" class="leads-list">
+        <p class="empty-text">No leads submitted yet.</p>
+    </div>
+</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
